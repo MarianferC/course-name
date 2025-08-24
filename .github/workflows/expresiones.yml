@@ -1,0 +1,27 @@
+name: Expresiones
+run-name: ¡Estoy aprendiendo a usar diferentes Expresiones!
+on:
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: "Nombre"
+        required: true
+        type: string
+      edad:
+        description: "Edad"
+        required: true
+        type: integer
+
+jobs:
+  menor:
+    if: ${{ inputs.edad < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre  }} es menor de edad
+  mayor:
+    if: ${{ inputs.edad >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre  }} es mayor de edad
