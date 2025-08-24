@@ -1,0 +1,8 @@
+name: contextos
+on: push
+jobs:
+  check-main:
+    if: ${{  github.actor == MarianferC}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo {{github.actor }} es Marianfer
