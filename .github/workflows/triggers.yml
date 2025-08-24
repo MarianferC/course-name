@@ -1,0 +1,26 @@
+name: Aprendiendo Triggers
+run-name: ¡Estoy aprendiendo a usar diferentes Triggers!
+on:
+  schedule:
+    cron: 20 * * * *
+    jobs:
+      hola-mundo:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Definir variable
+            run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+          - name: Correr script
+            run: node index.ts
+  push:
+    branches:
+      - "main"
+      - "relases/***"
+  pull_request:
+    types:
+      - [closed, opened]
+    braches:
+      - "relase/**"
+    paths:
+      - "***.ts"
